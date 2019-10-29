@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace dangnhap
 {
-    public partial class Form1 : Form
+    public partial class fDanhapQuanLy : Form
     {
-        public Form1()
+        public fDanhapQuanLy()
         {
             InitializeComponent();
         }
