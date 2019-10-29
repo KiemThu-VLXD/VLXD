@@ -1,4 +1,4 @@
-﻿namespace VLXD
+﻿namespace dangnhap
 {
     partial class Form1
     {
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 413);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbXemMatKhau);
             this.Controls.Add(this.btnExit);

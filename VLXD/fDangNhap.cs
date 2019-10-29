@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VLXD
+namespace dangnhap
 {
     public partial class Form1 : Form
     {
