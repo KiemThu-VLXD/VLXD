@@ -1,6 +1,6 @@
-﻿namespace dangnhap
+﻿namespace VLXD
 {
-    partial class Form1
+    partial class fDangNhap
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDangNhap));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbXemMatKhau = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -135,7 +135,7 @@
             this.txtID.Size = new System.Drawing.Size(226, 30);
             this.txtID.TabIndex = 112;
             // 
-            // Form1
+            // fDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,8 +149,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtID);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "fDangNhap";
+            this.Text = "fDangNhap";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,4 +170,3 @@
         private System.Windows.Forms.TextBox txtID;
     }
 }
-

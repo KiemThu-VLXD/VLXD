@@ -1,6 +1,6 @@
-﻿namespace dangnhap
+﻿namespace VLXD
 {
-    partial class Form2
+    partial class fDatHang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDatHang));
             this.rdbTimTenSP = new System.Windows.Forms.RadioButton();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnTimSP = new System.Windows.Forms.Button();
@@ -64,18 +64,17 @@
             this.txtTimHD = new System.Windows.Forms.TextBox();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtTimKH = new System.Windows.Forms.TextBox();
             this.btnTimKH = new System.Windows.Forms.Button();
             this.txtMaKH = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.rdbNuKH = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnThemHD = new System.Windows.Forms.Button();
+            this.txtTimKH = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTenNVien = new System.Windows.Forms.TextBox();
-            this.txtDiaChiKH = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTTKHang = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -85,10 +84,11 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rdbNuKH = new System.Windows.Forms.RadioButton();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rdbNamKH = new System.Windows.Forms.RadioButton();
             this.txtTenKH = new System.Windows.Forms.TextBox();
             this.txtSdtKH = new System.Windows.Forms.TextBox();
+            this.txtDiaChiKH = new System.Windows.Forms.TextBox();
             this.txtHoKH = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -284,9 +284,9 @@
             // btnDangXuat
             // 
             this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
-            this.btnDangXuat.Location = new System.Drawing.Point(482, 11);
+            this.btnDangXuat.Location = new System.Drawing.Point(534, 81);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(95, 29);
+            this.btnDangXuat.Size = new System.Drawing.Size(95, 26);
             this.btnDangXuat.TabIndex = 125;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -478,9 +478,9 @@
             // 
             // btnQLy
             // 
-            this.btnQLy.Location = new System.Drawing.Point(747, 12);
+            this.btnQLy.Location = new System.Drawing.Point(769, 82);
             this.btnQLy.Name = "btnQLy";
-            this.btnQLy.Size = new System.Drawing.Size(75, 28);
+            this.btnQLy.Size = new System.Drawing.Size(75, 26);
             this.btnQLy.TabIndex = 126;
             this.btnQLy.Text = "Quản lý";
             this.btnQLy.UseVisualStyleBackColor = true;
@@ -499,9 +499,9 @@
             // btnTaiKhoan
             // 
             this.btnTaiKhoan.AutoSize = true;
-            this.btnTaiKhoan.Location = new System.Drawing.Point(583, 11);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(635, 81);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(158, 29);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(128, 26);
             this.btnTaiKhoan.TabIndex = 127;
             this.btnTaiKhoan.Text = "Thông tin tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
@@ -517,17 +517,6 @@
             this.label9.Size = new System.Drawing.Size(55, 16);
             this.label9.TabIndex = 104;
             this.label9.Text = "Tên NV:";
-            // 
-            // txtTimKH
-            // 
-            this.txtTimKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTimKH.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txtTimKH.Location = new System.Drawing.Point(11, 243);
-            this.txtTimKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTimKH.Name = "txtTimKH";
-            this.txtTimKH.Size = new System.Drawing.Size(411, 27);
-            this.txtTimKH.TabIndex = 98;
-            this.txtTimKH.Text = "Nhập từ khóa............";
             // 
             // btnTimKH
             // 
@@ -564,6 +553,22 @@
             this.label15.Size = new System.Drawing.Size(60, 19);
             this.label15.TabIndex = 96;
             this.label15.Text = "Mã KH:";
+            // 
+            // rdbNuKH
+            // 
+            this.rdbNuKH.AutoSize = true;
+            this.rdbNuKH.BackColor = System.Drawing.Color.DarkCyan;
+            this.rdbNuKH.Checked = true;
+            this.rdbNuKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.rdbNuKH.ForeColor = System.Drawing.Color.White;
+            this.rdbNuKH.Location = new System.Drawing.Point(553, 27);
+            this.rdbNuKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rdbNuKH.Name = "rdbNuKH";
+            this.rdbNuKH.Size = new System.Drawing.Size(48, 23);
+            this.rdbNuKH.TabIndex = 84;
+            this.rdbNuKH.TabStop = true;
+            this.rdbNuKH.Text = "Nữ";
+            this.rdbNuKH.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
@@ -603,6 +608,17 @@
             this.btnThemHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemHD.UseVisualStyleBackColor = true;
             // 
+            // txtTimKH
+            // 
+            this.txtTimKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTimKH.ForeColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txtTimKH.Location = new System.Drawing.Point(11, 243);
+            this.txtTimKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTimKH.Name = "txtTimKH";
+            this.txtTimKH.Size = new System.Drawing.Size(411, 27);
+            this.txtTimKH.TabIndex = 98;
+            this.txtTimKH.Text = "Nhập từ khóa............";
+            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "DienThoai";
@@ -620,15 +636,6 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 250;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "GioiTinh";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Giới tính";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.Width = 80;
-            // 
             // txtTenNVien
             // 
             this.txtTenNVien.Enabled = false;
@@ -639,27 +646,16 @@
             this.txtTenNVien.Size = new System.Drawing.Size(137, 23);
             this.txtTenNVien.TabIndex = 103;
             // 
-            // txtDiaChiKH
-            // 
-            this.txtDiaChiKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtDiaChiKH.Location = new System.Drawing.Point(134, 96);
-            this.txtDiaChiKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtDiaChiKH.Multiline = true;
-            this.txtDiaChiKH.Name = "txtDiaChiKH";
-            this.txtDiaChiKH.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDiaChiKH.Size = new System.Drawing.Size(224, 56);
-            this.txtDiaChiKH.TabIndex = 82;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabTTKHang);
             this.tabControl1.Controls.Add(this.tabDatHang);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Location = new System.Drawing.Point(0, -138);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(896, 588);
+            this.tabControl1.Size = new System.Drawing.Size(800, 588);
             this.tabControl1.TabIndex = 124;
             // 
             // tabTTKHang
@@ -687,7 +683,7 @@
             this.tabTTKHang.Location = new System.Drawing.Point(4, 28);
             this.tabTTKHang.Name = "tabTTKHang";
             this.tabTTKHang.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTTKHang.Size = new System.Drawing.Size(888, 556);
+            this.tabTTKHang.Size = new System.Drawing.Size(792, 556);
             this.tabTTKHang.TabIndex = 0;
             this.tabTTKHang.Text = "Thông tin Khách Hàng";
             // 
@@ -747,7 +743,7 @@
             this.dgvKH.ReadOnly = true;
             this.dgvKH.RowTemplate.Height = 40;
             this.dgvKH.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvKH.Size = new System.Drawing.Size(882, 278);
+            this.dgvKH.Size = new System.Drawing.Size(786, 278);
             this.dgvKH.TabIndex = 97;
             // 
             // dataGridViewTextBoxColumn1
@@ -775,21 +771,14 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // rdbNuKH
+            // dataGridViewTextBoxColumn3
             // 
-            this.rdbNuKH.AutoSize = true;
-            this.rdbNuKH.BackColor = System.Drawing.Color.DarkCyan;
-            this.rdbNuKH.Checked = true;
-            this.rdbNuKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.rdbNuKH.ForeColor = System.Drawing.Color.White;
-            this.rdbNuKH.Location = new System.Drawing.Point(553, 27);
-            this.rdbNuKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rdbNuKH.Name = "rdbNuKH";
-            this.rdbNuKH.Size = new System.Drawing.Size(48, 23);
-            this.rdbNuKH.TabIndex = 84;
-            this.rdbNuKH.TabStop = true;
-            this.rdbNuKH.Text = "Nữ";
-            this.rdbNuKH.UseVisualStyleBackColor = false;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "GioiTinh";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Giới tính";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 80;
             // 
             // rdbNamKH
             // 
@@ -822,6 +811,17 @@
             this.txtSdtKH.Name = "txtSdtKH";
             this.txtSdtKH.Size = new System.Drawing.Size(142, 27);
             this.txtSdtKH.TabIndex = 85;
+            // 
+            // txtDiaChiKH
+            // 
+            this.txtDiaChiKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtDiaChiKH.Location = new System.Drawing.Point(134, 96);
+            this.txtDiaChiKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDiaChiKH.Multiline = true;
+            this.txtDiaChiKH.Name = "txtDiaChiKH";
+            this.txtDiaChiKH.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtDiaChiKH.Size = new System.Drawing.Size(224, 56);
+            this.txtDiaChiKH.TabIndex = 82;
             // 
             // txtHoKH
             // 
@@ -1227,17 +1227,17 @@
             this.dtpNgayGiaoHang.Size = new System.Drawing.Size(185, 23);
             this.dtpNgayGiaoHang.TabIndex = 112;
             // 
-            // Form2
+            // fDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 615);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.btnQLy);
             this.Controls.Add(this.btnTaiKhoan);
-            this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "fDatHang";
+            this.Text = "fDatHang";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -1294,18 +1294,17 @@
         private System.Windows.Forms.TextBox txtTimHD;
         private System.Windows.Forms.Button btnTaiKhoan;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.Button btnTimKH;
         private System.Windows.Forms.TextBox txtMaKH;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RadioButton rdbNuKH;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnThemHD;
+        private System.Windows.Forms.TextBox txtTimKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TextBox txtTenNVien;
-        private System.Windows.Forms.TextBox txtDiaChiKH;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTTKHang;
         private System.Windows.Forms.Panel panel1;
@@ -1315,10 +1314,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.RadioButton rdbNuKH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.RadioButton rdbNamKH;
         private System.Windows.Forms.TextBox txtTenKH;
         private System.Windows.Forms.TextBox txtSdtKH;
+        private System.Windows.Forms.TextBox txtDiaChiKH;
         private System.Windows.Forms.TextBox txtHoKH;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
