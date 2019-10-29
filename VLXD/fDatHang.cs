@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VLXD
+namespace dangnhap
 {
-    public partial class fDatHang : Form
+    public partial class Form2 : Form
     {
-        public fDatHang()
+        public Form2()
         {
             InitializeComponent();
         }
