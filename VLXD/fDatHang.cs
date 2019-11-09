@@ -32,7 +32,6 @@ namespace VLXD
 
             
         }
-
         #region Khách hàng
         //Hiển thị KH
         private void LoadKH()
@@ -163,6 +162,7 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn khách hàng muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Tìm KH
         private void txtTimKH_KeyDown(object sender, KeyEventArgs e)
         {
@@ -204,10 +204,7 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
         #endregion
-
 
     }
 }

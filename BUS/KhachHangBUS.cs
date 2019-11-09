@@ -21,7 +21,10 @@ namespace BUS
             khDAO.AddKHDAO(kh);
         }
 
-        
+        public void DeleteKHBUS(int id)
+        {
+            khDAO.DeleteKHDAO(id);
+        }
         public void UpdateKHBUS(KhachHang khToUpdate)
         {
             khDAO.UpdateKHDAO(khToUpdate);

@@ -21,7 +21,12 @@ namespace DAO
             db.SaveChanges();
         }
 
-       
+        public void DeleteKHDAO(int id)
+        {
+            KhachHang kh = db.KhachHang.Find(id);
+            db.KhachHang.Remove(kh);
+            db.SaveChanges();
+        }
         public void UpdateKHDAO(KhachHang khToUpdate)
         {
             KhachHang kh = db.KhachHang.Find(khToUpdate.MaKH);
