@@ -119,8 +119,52 @@ namespace VLXD
             }
         }
 
-       
-       
+        //Sửa KH
+        private void UpdateKH()
+        {
+            KhachHang khToUpdate = new KhachHang();
+            khToUpdate.MaKH = int.Parse(txtMaKH.Text);
+            khToUpdate.HoKH = txtHoKH.Text;
+            khToUpdate.TenKH = txtTenKH.Text;
+            if (rdbNamKH.Checked == true)
+            {
+                khToUpdate.GioiTinh = "Nam";
+            }
+            else
+            {
+                khToUpdate.GioiTinh = "Nữ";
+            }
+            khToUpdate.DiaChi = txtDiaChiKH.Text;
+            khToUpdate.DienThoai = txtSdtKH.Text;
+
+            khBUS.UpdateKHBUS(khToUpdate);
+        }
+
+        private void btnSuaKH_Click(object sender, EventArgs e)
+        {
+            if (txtMaKH.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa khách hàng. " + txtMaKH.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateKH();
+                        LoadKH();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn khách hàng muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
         #endregion
 
 

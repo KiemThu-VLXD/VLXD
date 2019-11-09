@@ -22,5 +22,16 @@ namespace DAO
         }
 
        
+        public void UpdateKHDAO(KhachHang khToUpdate)
+        {
+            KhachHang kh = db.KhachHang.Find(khToUpdate.MaKH);
+            kh.HoKH = khToUpdate.HoKH;
+            kh.TenKH = khToUpdate.TenKH;
+            kh.GioiTinh = khToUpdate.GioiTinh;
+            kh.DiaChi = khToUpdate.DiaChi;
+            kh.DienThoai = khToUpdate.DienThoai;
+            db.SaveChanges();
+        }
+       
     }
 }
