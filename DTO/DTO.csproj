@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Entity\KhachHang.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
     <Compile Include="Entity\VLXD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

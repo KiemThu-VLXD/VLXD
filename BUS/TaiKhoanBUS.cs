@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using DAO;
 using DTO.Entity;
+
 namespace BUS
 {
-    public class TaiKhoanBUS
+    public class KhachHangBUS
     {
-        TaiKhoanDAO userDAO = new TaiKhoanDAO();
+        KhachHangDAO khDAO = new KhachHangDAO();
 
-        public int DangNhapBUS(string uName, string pass)
+        public List<KhachHang> LoadKHBUS()
         {
-            return userDAO.DangNhapDAO(uName, pass);
+            return khDAO.LoadKHDAO();
         }
+        public void AddKHBUS(KhachHang kh)
+        {
+            khDAO.AddKHDAO(kh);
+        }
+
+      
 
     }
 }

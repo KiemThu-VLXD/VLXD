@@ -20,26 +20,55 @@ namespace VLXD
             InitializeComponent();
         }
 
-        SanPhamBUS spBUS = new SanPhamBUS();
-        NhanVienBUS nvBUS = new NhanVienBUS();
-        HoaDonBUS hdBUS = new HoaDonBUS();
-        ChiTietHDBUS cthdBUS = new ChiTietHDBUS();
+        
         KhachHangBUS khBUS = new KhachHangBUS();
 
         private void fDatHang_Load(object sender, EventArgs e)
         {
             LoadKH();
-            LoadHD();
-
-            dgvSP.AutoGenerateColumns = false;
-            dgvSP.DataSource = spBUS.LoadSPBUS();
-
+ 
             cbMaKHang.DataSource = khBUS.LoadKHBUS();
             cbMaKHang.DisplayMember = "MaKH";
 
-            cbMaNVien.DataSource = nvBUS.LoadNVBUS();
-            cbMaNVien.DisplayMember = "MaNV";
+        }
+        #region Khách hàng
+        //Hiển thị KH
+        private void LoadKH()
+        {
+            dgvKH.AutoGenerateColumns = false;
+            dgvKH.DataSource = khBUS.LoadKHBUS();
+        }
 
-            cbMaSPham.DataSource = spBUS.LoadSPBUS();
-            cbMaSPham.DisplayMember = "MaSP";
+        private void tabKH_Click(object sender, EventArgs e)
+        {
+            LoadKH();
+            txtMaKH.Text = "";
+            txtHoKH.Text = "";
+            txtTenKH.Text = "";
+            txtDiaChiKH.Text = "";
+            txtSdtKH.Text = "";
+            txtTimKH.Text = "";
+        }
+
+        private void dgvKH_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaKH.Text = dgvKH.Rows[row].Cells[0].Value.ToString();
+                txtHoKH.Text = dgvKH.Rows[row].Cells[1].Value.ToString();
+                txtTenKH.Text = dgvKH.Rows[row].Cells[2].Value.ToString();
+
+                if (dgvKH.Rows[row].Cells[3].Value.ToString() == "Nam")
+                {
+                    rdbNamKH.Checked = true;
+                }
+                else
+                {
+                    rdbNuKH.Checked = true;
+                }
+
+                txtDiaChiKH.Text = dgvKH.Rows[row].Cells[4].Value.ToString();
+                txtSdtKH.Text = dgvKH.Rows[row].Cells[5].Value.ToString();
+            }
         }
