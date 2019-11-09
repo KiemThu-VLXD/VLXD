@@ -205,6 +205,40 @@ namespace VLXD
             }
         }
         #endregion
+        #region Button
+
+        private void btnQLy_Click(object sender, EventArgs e)
+        {
+            fDangNhapQuanLy f = new fDangNhapQuanLy();
+            f.Show();
+            this.Hide();
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            switch (result)
+            {
+                case DialogResult.No:
+                    break;
+                case DialogResult.Yes:
+                    fDangNhap f = new fDangNhap();
+                    f.Show();
+                    this.Hide();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            fTaiKhoan f = new fTaiKhoan();
+            f.Show();
+            this.Hide();
+        }
+
+        #endregion
 
     }
 }
