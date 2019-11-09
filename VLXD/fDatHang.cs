@@ -20,17 +20,19 @@ namespace VLXD
             InitializeComponent();
         }
 
-        
+       
         KhachHangBUS khBUS = new KhachHangBUS();
 
         private void fDatHang_Load(object sender, EventArgs e)
         {
             LoadKH();
- 
+            
             cbMaKHang.DataSource = khBUS.LoadKHBUS();
             cbMaKHang.DisplayMember = "MaKH";
 
+            
         }
+
         #region Khách hàng
         //Hiển thị KH
         private void LoadKH()
@@ -72,3 +74,55 @@ namespace VLXD
                 txtSdtKH.Text = dgvKH.Rows[row].Cells[5].Value.ToString();
             }
         }
+
+        //Thêm KH
+        private void AddKH()
+        {
+            KhachHang khToAdd = new KhachHang();
+            khToAdd.HoKH = txtHoKH.Text;
+            khToAdd.TenKH = txtTenKH.Text;
+            if (rdbNamKH.Checked == true)
+            {
+                khToAdd.GioiTinh = "Nam";
+            }
+            else
+            {
+                khToAdd.GioiTinh = "Nữ";
+            }
+            khToAdd.DiaChi = txtDiaChiKH.Text;
+            khToAdd.DienThoai = txtSdtKH.Text;
+
+            khBUS.AddKHBUS(khToAdd);
+        }
+
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            if (txtHoKH.Text != "" || txtTenKH.Text != "" || txtDiaChiKH.Text != "" || txtSdtKH.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Thêm một khách hàng mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddKH();
+                        LoadKH();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+       
+        #endregion
+
+
+    }
+}
