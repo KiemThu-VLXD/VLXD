@@ -163,6 +163,47 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn khách hàng muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Tìm KH
+        private void txtTimKH_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimKH_Click(sender, e);
+            }
+        }
+
+        private void txtTimKH_Click(object sender, EventArgs e)
+        {
+            txtTimKH.Text = "";
+            txtTimKH.ForeColor = Color.Black;
+        }
+
+        private void SearchKH()
+        {
+            if (rdbTimMaKH.Checked == true)
+            {
+                int key = int.Parse(txtTimKH.Text);
+                dgvKH.DataSource = khBUS.SearchMaKHBUS(key);
+            }
+            else
+            {
+                string key = txtTimKH.Text;
+                dgvKH.DataSource = khBUS.SearchTenKHBUS(key);
+            }
+
+        }
+
+        private void btnTimKH_Click(object sender, EventArgs e)
+        {
+            if (txtTimKH.Text != "" && txtTimKH.Text != "Nhập từ khóa............")
+            {
+                SearchKH();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
 
         #endregion

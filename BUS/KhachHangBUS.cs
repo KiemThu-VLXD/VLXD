@@ -26,7 +26,15 @@ namespace BUS
         {
             khDAO.UpdateKHDAO(khToUpdate);
         }
-        
+        public List<KhachHang> SearchMaKHBUS(int key)
+        {
+            return khDAO.SearchMaKHDAO(key);
+        }
+
+        public List<KhachHang> SearchTenKHBUS(string key)
+        {
+            return khDAO.SearchTenKHDAO(key);
+        }
 
     }
 }
