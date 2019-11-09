@@ -173,7 +173,7 @@
             this.tabTTKHang.Size = new System.Drawing.Size(886, 556);
             this.tabTTKHang.TabIndex = 0;
             this.tabTTKHang.Text = "Thông tin Khách Hàng";
-           
+            this.tabTTKHang.Click += new System.EventHandler(this.tabKH_Click);
             // 
             // panel1
             // 
@@ -233,7 +233,8 @@
             this.dgvKH.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKH.Size = new System.Drawing.Size(880, 278);
             this.dgvKH.TabIndex = 97;
-            
+            this.dgvKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKH_CellClick);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "MaKH";
@@ -295,7 +296,8 @@
             this.txtTimKH.Size = new System.Drawing.Size(411, 27);
             this.txtTimKH.TabIndex = 98;
             this.txtTimKH.Text = "Nhập từ khóa............";
-            
+            this.txtTimKH.Click += new System.EventHandler(this.txtTimKH_Click);
+            this.txtTimKH.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimKH_KeyDown);
             // 
             // btnTimKH
             // 
@@ -474,7 +476,7 @@
             this.btnSuaKH.Text = "Sửa";
             this.btnSuaKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSuaKH.UseVisualStyleBackColor = true;
-            
+            this.btnSuaKH.Click += new System.EventHandler(this.btnSuaKH_Click);
             // 
             // btnThemKH
             // 
@@ -489,7 +491,7 @@
             this.btnThemKH.Text = "Thêm";
             this.btnThemKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemKH.UseVisualStyleBackColor = true;
-    
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // tabDatHang
             // 
@@ -531,7 +533,7 @@
             this.tabDatHang.Size = new System.Drawing.Size(886, 556);
             this.tabDatHang.TabIndex = 1;
             this.tabDatHang.Text = "Đặt hàng";
-            
+           
             // 
             // btnThanhToan
             // 
@@ -542,7 +544,7 @@
             this.btnThanhToan.TabIndex = 123;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
-    
+            
             // 
             // groupBox2
             // 
@@ -600,7 +602,7 @@
             this.btnTimSP.Text = "Tìm";
             this.btnTimSP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimSP.UseVisualStyleBackColor = true;
-            
+            this.btnTimSP.Click += new System.EventHandler(this.btnTimSP_Click);
             // 
             // txtTimSP
             // 
@@ -612,7 +614,8 @@
             this.txtTimSP.Size = new System.Drawing.Size(174, 23);
             this.txtTimSP.TabIndex = 123;
             this.txtTimSP.Text = "Nhập từ khóa............";
-           
+            this.txtTimSP.Click += new System.EventHandler(this.txtTimSP_Click);
+            this.txtTimSP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimSP_KeyDown);
             // 
             // dgvSP
             // 
@@ -687,7 +690,7 @@
             this.btnThemHD.Text = "Thêm";
             this.btnThemHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemHD.UseVisualStyleBackColor = true;
-            
+           
             // 
             // txtTenNVien
             // 
@@ -712,7 +715,7 @@
             this.btnSuaHD.Text = "Sửa";
             this.btnSuaHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSuaHD.UseVisualStyleBackColor = true;
-           
+          
             // 
             // cbMaSPham
             // 
@@ -834,7 +837,7 @@
             this.cbMaKHang.Name = "cbMaKHang";
             this.cbMaKHang.Size = new System.Drawing.Size(92, 27);
             this.cbMaKHang.TabIndex = 116;
-           
+            
             // 
             // cbMaNVien
             // 
@@ -843,7 +846,7 @@
             this.cbMaNVien.Name = "cbMaNVien";
             this.cbMaNVien.Size = new System.Drawing.Size(92, 27);
             this.cbMaNVien.TabIndex = 116;
-            
+           
             // 
             // label5
             // 
@@ -921,7 +924,7 @@
             this.txtTimHD.Size = new System.Drawing.Size(334, 27);
             this.txtTimHD.TabIndex = 12;
             this.txtTimHD.Text = "Nhập từ khóa............";
-           
+            
             // 
             // rdbTimMaHD
             // 
@@ -962,7 +965,7 @@
             this.dgvHD.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvHD.Size = new System.Drawing.Size(868, 210);
             this.dgvHD.TabIndex = 0;
-            
+           
             // 
             // Col3
             // 
@@ -1064,7 +1067,7 @@
             this.btnTimHD.Text = "Tìm";
             this.btnTimHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimHD.UseVisualStyleBackColor = true;
-           
+          
             // 
             // txtGiaBan
             // 
@@ -1145,7 +1148,7 @@
             this.btnQLy.TabIndex = 123;
             this.btnQLy.Text = "Quản lý";
             this.btnQLy.UseVisualStyleBackColor = true;
-           
+            this.btnQLy.Click += new System.EventHandler(this.btnQLy_Click);
             // 
             // btnDangXuat
             // 
@@ -1157,7 +1160,7 @@
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangXuat.UseVisualStyleBackColor = true;
-           
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnTaiKhoan
             // 
@@ -1168,7 +1171,7 @@
             this.btnTaiKhoan.TabIndex = 123;
             this.btnTaiKhoan.Text = "Thông tin tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
-           
+            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // dataGridViewTextBoxColumn6
             // 
