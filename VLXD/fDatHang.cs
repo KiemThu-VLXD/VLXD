@@ -21,7 +21,9 @@ namespace VLXD
         }
 
         SanPhamBUS spBUS = new SanPhamBUS();
-       
+        NhanVienBUS nvBUS = new NhanVienBUS();
+        HoaDonBUS hdBUS = new HoaDonBUS();
+        ChiTietHDBUS cthdBUS = new ChiTietHDBUS();
         KhachHangBUS khBUS = new KhachHangBUS();
 
         private void fDatHang_Load(object sender, EventArgs e)
@@ -282,6 +284,80 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        #endregion
+
+        #region Hóa đơn
+
+        //Hien thi 
+        private void tabDatHang_Click(object sender, EventArgs e)
+        {
+            dgvSP.DataSource = spBUS.LoadSPBUS();
+
+            txtSoLuong.Text = "";
+            txtGiamGia.Text = "";
+            txtThanhTien.Text = "";
+            dtpNgayDatHang.Value = DateTime.Now;
+            dtpNgayGiaoHang.Value = DateTime.Now;
+            LoadHD();
+        }
+
+        private void LoadHD()
+        {
+            dgvHD.AutoGenerateColumns = false;
+            dgvHD.DataSource = hdBUS.LoadHDBUS();
+        }
+
+        private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaHD.Text = dgvHD.Rows[row].Cells[0].Value.ToString();
+                cbMaKHang.Text = dgvHD.Rows[row].Cells[1].Value.ToString();
+                cbMaNVien.Text = dgvHD.Rows[row].Cells[2].Value.ToString();
+                dtpNgayDatHang.Value = DateTime.Parse(dgvHD.Rows[row].Cells[3].Value.ToString());
+                dtpNgayGiaoHang.Value = DateTime.Parse(dgvHD.Rows[row].Cells[4].Value.ToString());
+
+                cbMaSPham.Text = dgvHD.Rows[row].Cells[5].Value.ToString();
+                txtGiaBan.Text = dgvHD.Rows[row].Cells[6].Value.ToString();
+                txtSoLuong.Text = dgvHD.Rows[row].Cells[7].Value.ToString();
+                txtGiamGia.Text = dgvHD.Rows[row].Cells[8].Value.ToString();
+                txtThanhTien.Text = dgvHD.Rows[row].Cells[9].Value.ToString();
+            }
+        }
+
+        private void cbMaKHang_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                KhachHang k = cb.SelectedValue as KhachHang;
+                txtTenKHang.Text = (k.HoKH + " " + k.TenKH).ToString();
+            }
+        }
+
+        private void cbMaNVien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                NhanVien nv = cb.SelectedValue as NhanVien;
+                txtTenNVien.Text = (nv.HoNV + " " + nv.TenNV).ToString();
+            }
+        }
+
+        private void cbMaSPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                SanPham sp = cb.SelectedValue as SanPham;
+                txtTenSPham.Text = sp.TenSP.ToString();
+                txtGiaBan.Text = (sp.DonGia + sp.DonGia * 10 / 100).ToString();
+            }
+        }
+
+        
         #endregion
     }
 }
