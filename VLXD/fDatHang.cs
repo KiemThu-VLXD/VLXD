@@ -40,7 +40,7 @@ namespace VLXD
             cbMaNVien.DataSource = nvBUS.LoadNVBUS();
             cbMaNVien.DisplayMember = "MaNV";
 
-            cbMaSPham.DataSource = spBUS.LoadSPBUS();
+            cbMaSPham.DataSource = spBUS.LoadSPBUS(); 
             cbMaSPham.DisplayMember = "MaSP";
         }
 
@@ -516,7 +516,46 @@ namespace VLXD
             }
         }
 
-        
+        //Tim HD
+        private void txtTimHD_Click(object sender, EventArgs e)
+        {
+            txtTimHD.Text = "";
+            txtTimHD.ForeColor = Color.Black;
+        }
+
+        private void txtTimHD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimHD_Click(sender, e);
+            }
+        }
+
+        private void SearchHD()
+        {
+            if (rdbTimMaHD.Checked)
+            {
+                int maHD = int.Parse(txtTimHD.Text);
+                dgvHD.DataSource = hdBUS.SearchMaHDBUS(maHD);
+            }
+            else
+            {
+                int maKH = int.Parse(txtTimHD.Text);
+                dgvHD.DataSource = hdBUS.SearchMaHDBUS(maKH);
+            }
+        }
+
+        private void btnTimHD_Click(object sender, EventArgs e)
+        {
+            if (txtTimHD.Text != "" && txtTimHD.Text != "Nhập từ khóa............")
+            {
+                SearchHD();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         #endregion
     }
