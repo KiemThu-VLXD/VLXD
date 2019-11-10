@@ -12,7 +12,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public KhachHang()
         {
-            
+            HoaDon = new HashSet<HoaDon>();
         }
 
         [Key]
@@ -33,6 +33,7 @@
         [StringLength(50)]
         public string DienThoai { get; set; }
 
-        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

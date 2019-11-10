@@ -61,6 +61,7 @@
     <Compile Include="Entity\SanPham.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
     <Compile Include="Entity\VLXD.cs" />
+    <Compile Include="HD_CTHD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
