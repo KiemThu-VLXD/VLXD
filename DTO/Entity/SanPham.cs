@@ -9,7 +9,12 @@
     [Table("SanPham")]
     public partial class SanPham
     {
-        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SanPham()
+        {
+            ChiTietHD = new HashSet<ChiTietHD>();
+        }
+
         [Key]
         public int MaSP { get; set; }
 
@@ -35,5 +40,8 @@
         public int? MaNSX { get; set; }
 
        
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietHD> ChiTietHD { get; set; }
     }
 }

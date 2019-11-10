@@ -29,7 +29,7 @@
         [Column(TypeName = "money")]
         public decimal? ThanhTien { get; set; }
 
-        
+        public virtual HoaDon HoaDon { get; set; }
 
         public virtual SanPham SanPham { get; set; }
     }
