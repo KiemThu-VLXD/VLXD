@@ -21,6 +21,22 @@ namespace BUS
             nvDAO.AddNVDAO(nv);
         }
 
-       
+        public void DeleteNVBUS(int id)
+        {
+            nvDAO.DeleteNVDAO(id);
+        }
+        public void UpdateNVBUS(NhanVien nvToUpDate)
+        {
+            nvDAO.UpdateNVDAO(nvToUpDate);
+        }
+        public List<NhanVien> SearchMaNVBUS(int key)
+        {
+            return nvDAO.SearchMaNVDAO(key);
+        }
+
+        public List<NhanVien> SearchTenNVBUS(string key)
+        {
+            return nvDAO.SearchTenNVDAO(key);
+        }
     }
 }
