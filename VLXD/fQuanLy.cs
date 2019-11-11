@@ -24,7 +24,8 @@ namespace VLXD
         private void fQuanLy_Load(object sender, EventArgs e)
         {
             LoadNV();
-           
+            LoadSP();
+            
 
             cbMaNV.DataSource = nvBUS.LoadNVBUS();
             cbMaNV.DisplayMember = "MaNV";
@@ -34,6 +35,8 @@ namespace VLXD
             cbMaNVien.DataSource = nvBUS.LoadNVBUS();
             cbMaNVien.DisplayMember = "MaNV";
 
+            cbMaSP.DataSource = spBUS.LoadSPBUS();
+            cbMaSP.DisplayMember = "MaSP";
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -149,6 +152,7 @@ namespace VLXD
                 MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //Xoa Nhan Vien
         private void DeleteNV()
         {
@@ -179,6 +183,7 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhân viên muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Sua Nhan Vien
         private void UpdateNV()
         {
@@ -224,6 +229,7 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhân viên muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Tim Nhan Vien
         private void txtTimNV_Click(object sender, EventArgs e)
         {
@@ -265,10 +271,59 @@ namespace VLXD
             }
         }
 
+        #endregion
+
+        #region SanPham
+        SanPhamBUS spBUS = new SanPhamBUS();
+
+        //Hien thi San Pham
+        private void LoadSP()
+        {
+            dgvSP.AutoGenerateColumns = false;
+            dgvSP.DataSource = spBUS.LoadSPBUS();
+        }
+
+        private void tabSP_Click(object sender, EventArgs e)
+        {
+            LoadSP();
+            txtMaSP.Text = "";
+            txtTenSP.Text = "";
+            txtSoLuongTon.Text = "";
+            txtDonGia.Text = "";
+            txtDonViTinh.Text = "";
+            txtMaLoaiSP.Text = "";
+            txtMoTa.Text = "";
+
+            txtTimSP.Text = "";
+
+        }
+
+        private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaSP.Text = dgvSP.Rows[row].Cells[0].Value.ToString();
+                txtTenSP.Text = dgvSP.Rows[row].Cells[1].Value.ToString();
+                txtSoLuongTon.Text = dgvSP.Rows[row].Cells[2].Value.ToString();
+                txtDonGia.Text = dgvSP.Rows[row].Cells[3].Value.ToString();
+                txtDonViTinh.Text = dgvSP.Rows[row].Cells[4].Value.ToString();
+                txtMaLoaiSP.Text = dgvSP.Rows[row].Cells[6].Value.ToString();
+
+                if (dgvSP.Rows[row].Cells[5].Value != null)
+                {
+                    txtMoTa.Text = dgvSP.Rows[row].Cells[5].Value.ToString();
+                }
+                else
+                {
+                    txtMoTa.Text = "";
+                }
 
 
-
+            }
+        }
 
         #endregion
+
     }
 }
