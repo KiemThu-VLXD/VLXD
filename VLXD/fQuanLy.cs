@@ -149,6 +149,36 @@ namespace VLXD
                 MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Xoa Nhan Vien
+        private void DeleteNV()
+        {
+            int id = int.Parse(txtMaNV.Text);
+            nvBUS.DeleteNVBUS(id);
+        }
+
+        private void btnXoaNV_Click(object sender, EventArgs e)
+        {
+            if (txtMaNV.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa nhân viên " + txtMaNV.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteNV();
+                        LoadNV();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn nhân viên muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
 
 
