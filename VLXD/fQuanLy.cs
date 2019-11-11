@@ -105,7 +105,52 @@ namespace VLXD
             }
         }
 
-       
+        //Them Nhan Vien
+        private void AddNV()
+        {
+            NhanVien nv = new NhanVien();
+            nv.HoNV = txtHoNV.Text;
+            nv.TenNV = txtTenNV.Text;
+            if (rdbNamNV.Checked)
+            {
+                nv.GioiTinh = "Nam";
+            }
+            else
+            {
+                nv.GioiTinh = "Nữ";
+            }
+            nv.NgaySinh = dtpNgaySinhNV.Value;
+            nv.DiaChi = txtDiaChiNV.Text;
+            nv.DienThoai = txtSdtNV.Text;
+
+            nvBUS.AddNVBUS(nv);
+        }
+
+        private void btnThemNV_Click(object sender, EventArgs e)
+        {
+            if (txtHoNV.Text != "" && txtTenNV.Text != "" && txtDiaChiNV.Text != "" && txtSdtNV.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn thêm một nhân viên mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddNV();
+                        LoadNV();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         #endregion
     }
