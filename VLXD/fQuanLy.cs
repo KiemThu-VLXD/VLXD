@@ -322,6 +322,78 @@ namespace VLXD
 
             }
         }
+        //Them San Pham
+        private void AddSP()
+        {
+            SanPham spToAdd = new SanPham();
+            spToAdd.TenSP = txtTenSP.Text;
+            spToAdd.SoLuongTon = int.Parse(txtSoLuongTon.Text);
+            spToAdd.DonGia = decimal.Parse(txtDonGia.Text);
+            spToAdd.DonViTinh = txtDonViTinh.Text;
+            spToAdd.MoTa = txtMoTa.Text;
+            spToAdd.MaLoaiSP = int.Parse(txtMaLoaiSP.Text);
+
+
+            spBUS.AddSPBUS(spToAdd);
+        }
+
+        private void btnThemSP_Click(object sender, EventArgs e)
+        {
+            if (txtTenSP.Text != "" && txtDonViTinh.Text != "" && txtMaLoaiSP.Text != ""
+
+                && decimal.Parse(txtSoLuongTon.Text) >= 0 && decimal.Parse(txtDonGia.Text) > 0)
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn thêm một sản phẩm mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddSP();
+                        LoadSP();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Xoa San Pham
+        private void DeleteSP()
+        {
+            int id = int.Parse(txtMaSP.Text);
+            spBUS.DeleteSPBUS(id);
+        }
+
+        private void btnXoaSP_Click(object sender, EventArgs e)
+        {
+            if (txtMaSP.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm " + txtMaSP.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteSP();
+                        LoadSP();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn sản phẩm muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         #endregion
 
