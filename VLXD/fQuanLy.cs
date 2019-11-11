@@ -179,6 +179,52 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhân viên muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Sua Nhan Vien
+        private void UpdateNV()
+        {
+            NhanVien nvToUpdate = new NhanVien();
+            nvToUpdate.MaNV = int.Parse(txtMaNV.Text);
+            nvToUpdate.HoNV = txtHoNV.Text;
+            nvToUpdate.TenNV = txtTenNV.Text;
+            if (rdbNamNV.Checked == true)
+            {
+                nvToUpdate.GioiTinh = "Nam";
+            }
+            else
+            {
+                nvToUpdate.GioiTinh = "Nữ";
+            }
+            nvToUpdate.NgaySinh = dtpNgaySinhNV.Value;
+            nvToUpdate.DiaChi = txtDiaChiNV.Text;
+            nvToUpdate.DienThoai = txtSdtNV.Text;
+
+            nvBUS.UpdateNVBUS(nvToUpdate);
+        }
+
+        private void btnSuaNV_Click(object sender, EventArgs e)
+        {
+            if (txtMaNV.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa nhân viên " + txtMaNV.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateNV();
+                        LoadNV();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn nhân viên muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
 
