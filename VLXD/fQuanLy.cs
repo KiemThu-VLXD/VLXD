@@ -393,7 +393,49 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn sản phẩm muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Sua San Pham
+        private void UpdateSP()
+        {
+            SanPham spToUpdate = new SanPham();
 
+            spToUpdate.MaSP = int.Parse(txtMaSP.Text);
+            spToUpdate.TenSP = txtTenSP.Text;
+            spToUpdate.SoLuongTon = int.Parse(txtSoLuongTon.Text);
+            spToUpdate.DonGia = decimal.Parse(txtDonGia.Text);
+            spToUpdate.DonViTinh = txtDonViTinh.Text;
+            spToUpdate.MoTa = txtMoTa.Text;
+            spToUpdate.MaLoaiSP = int.Parse(txtMaLoaiSP.Text);
+
+
+            spBUS.UpdateSPBUS(spToUpdate);
+        }
+
+        private void btnSuaSP_Click(object sender, EventArgs e)
+        {
+            if (txtMaSP.Text != "" && decimal.Parse(txtDonGia.Text) > 0)
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa sản phẩm " + txtMaSP.Text,
+                    "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+
+                    case DialogResult.OK:
+                        UpdateSP();
+                        LoadSP();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn sản phẩm muốn sửa thông tin.\nLưu ý đơn giá phải lớn hơn 0, số lượng tồn lớn hơn hoặc bằng 0.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         #endregion
 
