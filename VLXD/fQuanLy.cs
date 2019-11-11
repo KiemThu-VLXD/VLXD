@@ -436,6 +436,47 @@ namespace VLXD
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Tim San Pham
+        private void txtTimSP_Click(object sender, EventArgs e)
+        {
+            txtTimSP.Text = "";
+            txtTimSP.ForeColor = Color.Black;
+        }
+
+        private void txtTimSP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimSP_Click(sender, e);
+            }
+        }
+
+        private void SearchSP()
+        {
+
+            if (rdbTimMaSP.Checked)
+            {
+                int key = int.Parse(txtTimSP.Text);
+                dgvSP.DataSource = spBUS.SearchMaSPBUS(key);
+            }
+            else
+            {
+                string key = txtTimSP.Text;
+                dgvSP.DataSource = spBUS.SearchTenSPBUS(key);
+            }
+        }
+
+        private void btnTimSP_Click(object sender, EventArgs e)
+        {
+            if (txtTimSP.Text != "" && txtTimSP.Text != "Nhập từ khóa............")
+            {
+                SearchSP();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         #endregion
 
