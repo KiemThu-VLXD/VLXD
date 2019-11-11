@@ -46,5 +46,51 @@ namespace DAO
 
             }
         }
+        public List<TaiKhoan> LoadUserDAO()
+        {
+            return db.TaiKhoan.ToList();
+        }
+
+        public void AddUserDAO(TaiKhoan user)
+        {
+            db.TaiKhoan.Add(user);
+            db.SaveChanges();
+        }
+        public void DeleteUserDAO(int idToDelete)
+        {
+            TaiKhoan user = db.TaiKhoan.Find(idToDelete);
+            db.TaiKhoan.Remove(user);
+            db.SaveChanges();
+        }
+
+        public void UpdateUserDAO(TaiKhoan userToUpdate)
+        {
+            TaiKhoan user = db.TaiKhoan.Find(userToUpdate.MaTaiKhoan);
+            user.TenTaiKhoan = userToUpdate.TenTaiKhoan;
+            user.MatKhau = userToUpdate.MatKhau;
+            user.ChucVu = userToUpdate.ChucVu;
+            user.MaNV = userToUpdate.MaNV;
+            db.SaveChanges();
+        }
+        public void UpdateUserMaNVDAO(TaiKhoan userToUpdate)
+        {
+            TaiKhoan user = db.TaiKhoan.Find(userToUpdate.MaNV);
+            user.TenTaiKhoan = userToUpdate.TenTaiKhoan;
+            user.MatKhau = userToUpdate.MatKhau;
+            db.SaveChanges();
+        }
+        public List<TaiKhoan> SearchMaTaiKhoanDAO(int key)
+        {
+            List<TaiKhoan> result = new List<TaiKhoan>();
+            result = db.TaiKhoan.Where(p => p.MaTaiKhoan == key).ToList();
+            return result;
+        }
+        public List<TaiKhoan> SearchTenTaiKhoanDAO(string key)
+        {
+            List<TaiKhoan> result = new List<TaiKhoan>();
+            result = db.TaiKhoan.Where(p => p.TenTaiKhoan == key).ToList();
+            return result;
+        }
+
     }
 }

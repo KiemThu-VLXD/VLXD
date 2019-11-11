@@ -1,28 +1,51 @@
-﻿namespace DTO.Entity
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using DAO;
+using DTO.Entity;
+namespace BUS
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("TaiKhoan")]
-    public partial class TaiKhoan
+    public class TaiKhoanBUS
     {
-        [Key]
-        public int MaTaiKhoan { get; set; }
+        TaiKhoanDAO userDAO = new TaiKhoanDAO();
 
-        [StringLength(50)]
-        public string TenTaiKhoan { get; set; }
+        public int DangNhapBUS(string uName, string pass)
+        {
+            return userDAO.DangNhapDAO(uName, pass);
+        }
+        public List<TaiKhoan> LoadUserBUS()
+        {
+            return userDAO.LoadUserDAO();
+        }
 
-        [StringLength(50)]
-        public string MatKhau { get; set; }
+        public void AddUserBUS(TaiKhoan user)
+        {
+            userDAO.AddUserDAO(user);
+        }
+        public void DeleteUserBUS(int idToDelete)
+        {
+            userDAO.DeleteUserDAO(idToDelete);
+        }
 
-        [StringLength(50)]
-        public string ChucVu { get; set; }
+        public void UpdateUserBUS(TaiKhoan user)
+        {
+            userDAO.UpdateUserDAO(user);
+        }
+        public void UpdateUserMaNVBUS(TaiKhoan user)
+        {
+            userDAO.UpdateUserMaNVDAO(user);
+        }
+        public List<TaiKhoan> SearchMaTaiKhoan(int key)
+        {
+            return userDAO.SearchMaTaiKhoanDAO(key);
+        }
 
-        public int MaNV { get; set; }
-
-        public virtual NhanVien NhanVien { get; set; }
+        public List<TaiKhoan> SearchTenTaiKhoan(string key)
+        {
+            return userDAO.SearchTenTaiKhoanDAO(key);
+        }
     }
 }
