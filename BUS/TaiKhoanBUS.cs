@@ -1,21 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using DAO;
-using DTO.Entity;
-namespace BUS
+﻿namespace DTO.Entity
 {
-    public class TaiKhoanBUS
-    {
-        TaiKhoanDAO userDAO = new TaiKhoanDAO();
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        public int DangNhapBUS(string uName, string pass)
-        {
-            return userDAO.DangNhapDAO(uName, pass);
-        }
-        
+    [Table("TaiKhoan")]
+    public partial class TaiKhoan
+    {
+        [Key]
+        public int MaTaiKhoan { get; set; }
+
+        [StringLength(50)]
+        public string TenTaiKhoan { get; set; }
+
+        [StringLength(50)]
+        public string MatKhau { get; set; }
+
+        [StringLength(50)]
+        public string ChucVu { get; set; }
+
+        public int MaNV { get; set; }
+
+        public virtual NhanVien NhanVien { get; set; }
     }
 }
