@@ -26,7 +26,9 @@ namespace VLXD
             LoadNV();
             LoadSP();
             LoadKH();
+            LoadLoaiSP();
             
+
 
 
             cbMaNV.DataSource = nvBUS.LoadNVBUS();
@@ -687,6 +689,173 @@ namespace VLXD
             }
         }
         #endregion
+
+        #region LoaiSanPham
+        LoaiSanPhamBUS loaiSPBUS = new LoaiSanPhamBUS();
+
+        //Hien thi Loai SP
+        private void LoadLoaiSP()
+        {
+            dgvLoai.AutoGenerateColumns = false;
+            dgvLoai.DataSource = loaiSPBUS.LoadLoaiSPBUS();
+        }
+
+        private void tabLoaiSP_Click(object sender, EventArgs e)
+        {
+            LoadLoaiSP();
+            txtMaLoai.Text = "";
+            txtTenLoai.Text = "";
+        }
+
+        private void dgvLoai_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaLoai.Text = dgvLoai.Rows[row].Cells[0].Value.ToString();
+                txtTenLoai.Text = dgvLoai.Rows[row].Cells[1].Value.ToString();
+            }
+        }
+
+        //Them Loai SP
+        private void AddLoaiSP()
+        {
+            LoaiSanPham loaiToAdd = new LoaiSanPham();
+            loaiToAdd.TenLoai = txtTenLoai.Text;
+
+            loaiSPBUS.AddLoaiSPBUS(loaiToAdd);
+        }
+
+        private void btnThemLoai_Click(object sender, EventArgs e)
+        {
+            if (txtTenLoai.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn thêm một loại sản phẩm mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddLoaiSP();
+                        LoadLoaiSP();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Xoa Loai SP
+        private void DeleteLoaiSP()
+        {
+            int id = int.Parse(txtMaLoai.Text);
+            loaiSPBUS.DeleteLoaiSPBUS(id);
+        }
+
+        private void btnXoaLoai_Click(object sender, EventArgs e)
+        {
+            if (txtMaLoai.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa loại sản phẩm?" + txtMaLoai.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteLoaiSP();
+                        LoadLoaiSP();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn loại sản phẩm muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        //Sua Loai SP
+        private void UpdateLoaiSP()
+        {
+            LoaiSanPham loaiToUpdate = new LoaiSanPham();
+            loaiToUpdate.MaLoaiSP = int.Parse(txtMaLoai.Text);
+            loaiToUpdate.TenLoai = txtTenLoai.Text;
+
+            loaiSPBUS.UpdateLoaiSPBUS(loaiToUpdate);
+        }
+
+        private void btnSuaLoai_Click(object sender, EventArgs e)
+        {
+            if (txtMaLoai.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa loại sản phẩm " + txtMaLoai.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateLoaiSP();
+                        LoadLoaiSP();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn loại sản phẩm muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Tim Loai SP
+        private void SearchLoaiSP()
+        {
+            if (rdbTimMaLoai.Checked)
+            {
+                int key = int.Parse(txtTimLoai.Text);
+                dgvLoai.DataSource = loaiSPBUS.SearchMaLoaiSPBUS(key);
+            }
+            else
+            {
+                string key = txtTimLoai.Text;
+                dgvLoai.DataSource = loaiSPBUS.SearchTenLoaiSPBUS(key);
+            }
+        }
+
+        private void btnTimLoai_Click(object sender, EventArgs e)
+        {
+            if (txtTimLoai.Text != "" && txtTimLoai.Text != "Nhập từ khóa............")
+            {
+                SearchLoaiSP();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtTimLoai_Click(object sender, EventArgs e)
+        {
+            txtTimLoai.Text = "";
+            txtTimLoai.ForeColor = Color.Black;
+        }
+
+        private void txtTimLoai_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimLoai_Click(sender, e);
+            }
+        }
+        #endregion
+
 
     }
 }

@@ -14,11 +14,11 @@
 
         public virtual DbSet<HoaDon> HoaDon { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
-       
+        public virtual DbSet<LoaiSanPham> LoaiSanPham { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
        
         public virtual DbSet<SanPham> SanPham { get; set; }
-      
+        
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
         public virtual DbSet<ChiTietHD> ChiTietHD { get; set; }
 
