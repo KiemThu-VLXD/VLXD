@@ -224,6 +224,47 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhân viên muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Tim Nhan Vien
+        private void txtTimNV_Click(object sender, EventArgs e)
+        {
+            txtTimNV.Text = "";
+            txtTimNV.ForeColor = Color.Black;
+        }
+
+        private void txtTimNV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimNV_Click(sender, e);
+            }
+        }
+
+        private void SearchNV()
+        {
+            if (rdbTimMaNV.Checked)
+            {
+                int maNV = int.Parse(txtTimNV.Text);
+                dgvNV.DataSource = nvBUS.SearchMaNVBUS(maNV);
+            }
+            else
+            {
+                string tenNV = txtTimNV.Text;
+                dgvNV.DataSource = nvBUS.SearchTenNVBUS(tenNV);
+            }
+        }
+
+        private void btnTimNV_Click(object sender, EventArgs e)
+        {
+            if (txtTimNV.Text != "" && txtTimNV.Text != "Nhập từ khóa............")
+            {
+                SearchNV();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
 
