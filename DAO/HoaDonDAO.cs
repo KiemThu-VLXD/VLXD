@@ -141,7 +141,7 @@ namespace DAO
                                         MaHD = hd.MaHD,
                                         MaKH = hd.MaKH,
                                         MaNV = hd.MaNV,
-9                                        NgayDatHang = hd.NgayDatHang,
+                                        NgayDatHang = hd.NgayDatHang,
                                         NgayGiaoHang = hd.NgayGiaoHang,
                                         MaSP = cthd.MaSP,
                                         GiaBan = cthd.GiaBan,
