@@ -1360,6 +1360,41 @@ namespace VLXD
 
         #endregion
 
+        #region Nhà sản xuất
 
+        NhaSanXuatBUS nsxBUS = new NhaSanXuatBUS();
+
+        //Hien thi
+        private void tabNSX_Click(object sender, EventArgs e)
+        {
+            txtMaNSX.Text = "";
+            txtTenNSX.Text = "";
+            txtDiaChiNSX.Text = "";
+            txtDienThoaiNSX.Text = "";
+            txtTimNSX.Text = "";
+            LoadNSX();
+        }
+
+        private void LoadNSX()
+        {
+            dgvNSX.AutoGenerateColumns = false;
+            dgvNSX.DataSource = nsxBUS.LoadNSXBUS();
+        }
+
+        private void dgvNSX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaNSX.Text = dgvNSX.Rows[row].Cells[0].Value.ToString();
+                txtTenNSX.Text = dgvNSX.Rows[row].Cells[1].Value.ToString();
+                txtDiaChiNSX.Text = dgvNSX.Rows[row].Cells[2].Value.ToString();
+                txtDienThoaiNSX.Text = dgvNSX.Rows[row].Cells[3].Value.ToString();
+            }
+        }
+
+       
+
+        #endregion
     }
 }
