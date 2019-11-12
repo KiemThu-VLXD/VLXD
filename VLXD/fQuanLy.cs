@@ -1426,6 +1426,42 @@ namespace VLXD
                 MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Sua NSX
+        private void UpdateNSX()
+        {
+            NhaSanXuat nsxToUpdate = new NhaSanXuat();
+            nsxToUpdate.MaNSX = int.Parse(txtMaNSX.Text);
+            nsxToUpdate.TenCongTyNSX = txtTenNSX.Text;
+            nsxToUpdate.DiaChiNSX = txtDiaChiNSX.Text;
+            nsxToUpdate.DienThoaiNSX = txtDienThoaiNSX.Text;
+
+            nsxBUS.UpdateNSXBUS(nsxToUpdate);
+        }
+
+        private void btnSuaNSX_Click(object sender, EventArgs e)
+        {
+            if (txtMaNSX.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa nhà sản xuất " + txtMaNV.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateNSX();
+                        LoadNSX();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn nhà sản xuất muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
 
