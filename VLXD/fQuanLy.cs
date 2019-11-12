@@ -30,14 +30,13 @@ namespace VLXD
             LoadUser();
             LoadThongKe();
             LoadHD();
-           
-
-
+            LoadNSX();
 
             cbMaNV.DataSource = nvBUS.LoadNVBUS();
             cbMaNV.DisplayMember = "MaNV";
 
-           
+            cbMaKH.DataSource = khBUS.LoadKHBUS();
+            cbMaKH.DisplayMember = "MaKH";
 
             cbMaNVien.DataSource = nvBUS.LoadNVBUS();
             cbMaNVien.DisplayMember = "MaNV";
@@ -329,6 +328,7 @@ namespace VLXD
 
             }
         }
+
         //Them San Pham
         private void AddSP()
         {
@@ -400,6 +400,7 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn sản phẩm muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Sua San Pham
         private void UpdateSP()
         {
@@ -443,6 +444,7 @@ namespace VLXD
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Tim San Pham
         private void txtTimSP_Click(object sender, EventArgs e)
         {
@@ -484,7 +486,6 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         #endregion
 
         #region KhachHang
@@ -755,7 +756,6 @@ namespace VLXD
 
         //Xoa Loai SP
         private void DeleteLoaiSP()
-
         {
             int id = int.Parse(txtMaLoai.Text);
             loaiSPBUS.DeleteLoaiSPBUS(id);
@@ -1162,6 +1162,7 @@ namespace VLXD
                 txtThanhTien.Text = dgvHD.Rows[row].Cells[9].Value.ToString();
             }
         }
+
         //Them HD
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -1240,6 +1241,7 @@ namespace VLXD
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //Xoa HD
         private void DeleteHD()
         {
@@ -1315,6 +1317,7 @@ namespace VLXD
                 MessageBox.Show("Hãy chọn hóa đơn muốn sửa thông tin.\nLưu ý không thể đổi thành sản phẩm khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Tim HD
         private void txtTimHD_Click(object sender, EventArgs e)
         {
@@ -1355,9 +1358,6 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-
-
         #endregion
 
         #region Nhà sản xuất
@@ -1392,6 +1392,7 @@ namespace VLXD
                 txtDienThoaiNSX.Text = dgvNSX.Rows[row].Cells[3].Value.ToString();
             }
         }
+
         //Them NSX
         private void AddNSX()
         {
@@ -1426,6 +1427,7 @@ namespace VLXD
                 MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //Sua NSX
         private void UpdateNSX()
         {
@@ -1461,6 +1463,7 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhà sản xuất muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         //Xoa NSX
         private void DeleteNSX()
         {
@@ -1492,10 +1495,46 @@ namespace VLXD
             }
         }
 
+        //Tim NSX
+        private void txtTimNSX_Click(object sender, EventArgs e)
+        {
+            txtTimNSX.Text = "";
+            txtTimNSX.ForeColor = Color.Black;
+        }
 
+        private void txtTimNSX_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimNSX_Click(sender, e);
+            }
+        }
 
+        private void SearchNSX()
+        {
+            if (rdbMaNSX.Checked)
+            {
+                int key = int.Parse(txtTimNSX.Text);
+                dgvNSX.DataSource = nsxBUS.SearchMaNSXBUS(key);
+            }
+            else
+            {
+                string key = txtTimNSX.Text;
+                dgvNSX.DataSource = nsxBUS.SearchTenNSXBUS(key);
+            }
+        }
 
-
+        private void btnTimNSX_Click(object sender, EventArgs e)
+        {
+            if (txtTimNSX.Text != "" && txtTimNSX.Text != "Nhập từ khóa............")
+            {
+                SearchNSX();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         #endregion
     }
