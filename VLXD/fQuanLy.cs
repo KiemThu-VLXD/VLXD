@@ -1315,6 +1315,46 @@ namespace VLXD
                 MessageBox.Show("Hãy chọn hóa đơn muốn sửa thông tin.\nLưu ý không thể đổi thành sản phẩm khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Tim HD
+        private void txtTimHD_Click(object sender, EventArgs e)
+        {
+            txtTimHD.Text = "";
+            txtTimHD.ForeColor = Color.Black;
+        }
+
+        private void txtTimHD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimHD_Click(sender, e);
+            }
+        }
+
+        private void SearchHD()
+        {
+            if (rdbTimMaHD.Checked)
+            {
+                int maHD = int.Parse(txtTimHD.Text);
+                dgvHD.DataSource = hdBUS.SearchMaHDBUS(maHD);
+            }
+            else
+            {
+                int maKH = int.Parse(txtTimHD.Text);
+                dgvHD.DataSource = hdBUS.SearchMaKHBUS(maKH);
+            }
+        }
+
+        private void btnTimHD_Click(object sender, EventArgs e)
+        {
+            if (txtTimHD.Text != "" && txtTimHD.Text != "Nhập từ khóa............")
+            {
+                SearchHD();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
 
 
