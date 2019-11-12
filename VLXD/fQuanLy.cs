@@ -29,7 +29,9 @@ namespace VLXD
             LoadLoaiSP();
             LoadUser();
             LoadThongKe();
-            
+            LoadHD();
+           
+
 
 
             cbMaNV.DataSource = nvBUS.LoadNVBUS();
@@ -1091,6 +1093,77 @@ namespace VLXD
                 MessageBox.Show("Hãy kiểm tra xem ngày bắt đầu có trước ngày kết thúc không.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        #endregion
+
+        #region Hóa đơn
+        ChiTietHDBUS cthdBUS = new ChiTietHDBUS();
+        //Hien thi 
+        private void tabHD_Click(object sender, EventArgs e)
+        {
+            LoadHD();
+            txtSoLuong.Text = "";
+            txtGiamGia.Text = "";
+            dtpNgayDatHang.Value = DateTime.Now;
+            dtpNgayGiaoHang.Value = DateTime.Now;
+        }
+
+        private void LoadHD()
+        {
+            dgvHD.AutoGenerateColumns = false;
+            dgvHD.DataSource = hdBUS.LoadHDBUS();
+        }
+
+        private void cbMaKH_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                KhachHang k = cb.SelectedValue as KhachHang;
+                txtTenKHang.Text = (k.HoKH + " " + k.TenKH).ToString();
+            }
+        }
+
+        private void cbMaNV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                NhanVien nv = cb.SelectedValue as NhanVien;
+                txtTenNVien.Text = (nv.HoNV + " " + nv.TenNV).ToString();
+            }
+        }
+
+        private void cbMaSP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                SanPham sp = cb.SelectedValue as SanPham;
+                txtTenSPham.Text = sp.TenSP.ToString();
+                txtGiaBan.Text = (sp.DonGia + sp.DonGia * 10 / 100).ToString();
+            }
+        }
+
+        string oldMaSP = null;
+        private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaHD.Text = dgvHD.Rows[row].Cells[0].Value.ToString();
+                cbMaKH.Text = dgvHD.Rows[row].Cells[1].Value.ToString();
+                cbMaNV.Text = dgvHD.Rows[row].Cells[2].Value.ToString();
+                dtpNgayDatHang.Value = DateTime.Parse(dgvHD.Rows[row].Cells[3].Value.ToString());
+                dtpNgayGiaoHang.Value = DateTime.Parse(dgvHD.Rows[row].Cells[4].Value.ToString());
+                oldMaSP = cbMaSP.Text = dgvHD.Rows[row].Cells[5].Value.ToString();
+                txtGiaBan.Text = dgvHD.Rows[row].Cells[6].Value.ToString();
+                txtSoLuong.Text = dgvHD.Rows[row].Cells[7].Value.ToString();
+                txtGiamGia.Text = dgvHD.Rows[row].Cells[8].Value.ToString();
+                txtThanhTien.Text = dgvHD.Rows[row].Cells[9].Value.ToString();
+            }
+        }
+
+        
         #endregion
 
 
