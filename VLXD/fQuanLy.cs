@@ -27,6 +27,7 @@ namespace VLXD
             LoadSP();
             LoadKH();
             LoadLoaiSP();
+            LoadUser();
             
 
 
@@ -752,6 +753,7 @@ namespace VLXD
 
         //Xoa Loai SP
         private void DeleteLoaiSP()
+
         {
             int id = int.Parse(txtMaLoai.Text);
             loaiSPBUS.DeleteLoaiSPBUS(id);
@@ -852,6 +854,205 @@ namespace VLXD
             if (e.KeyCode == Keys.Enter)
             {
                 btnTimLoai_Click(sender, e);
+            }
+        }
+        #endregion
+
+        #region TaiKhoan
+
+        TaiKhoanBUS userBUS = new TaiKhoanBUS();
+        //Hien thi 
+        private void LoadUser()
+        {
+            dgvUser.AutoGenerateColumns = false;
+            dgvUser.DataSource = userBUS.LoadUserBUS();
+        }
+
+        private void tabUser_Click(object sender, EventArgs e)
+        {
+            txtMaTaiKhoan.Text = "";
+            txtTenDangNhap.Text = "";
+            txtMatKhau.Text = "";
+        }
+
+        int eyeClick = 1;
+        private void lbXemMatKhau_Click(object sender, EventArgs e)
+        {
+            if (eyeClick % 2 != 0)
+            {
+                txtMatKhau.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtMatKhau.UseSystemPasswordChar = true;
+            }
+            eyeClick++;
+        }
+
+        private void dgvUser_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
+        }
+
+        private void dgvUser_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMatKhau.UseSystemPasswordChar = true;
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                txtMaTaiKhoan.Text = dgvUser.Rows[row].Cells[0].Value.ToString();
+                txtTenDangNhap.Text = dgvUser.Rows[row].Cells[1].Value.ToString();
+                txtMatKhau.Text = dgvUser.Rows[row].Cells[2].Value.ToString();
+                cbChucVu.Text = dgvUser.Rows[row].Cells[3].Value.ToString();
+                cbMaNVien.Text = dgvUser.Rows[row].Cells[4].Value.ToString();
+            }
+        }
+
+        //Them Tai Khoan
+        private void AddUser()
+        {
+            TaiKhoan userToAdd = new TaiKhoan();
+            userToAdd.TenTaiKhoan = txtTenDangNhap.Text;
+            userToAdd.MatKhau = txtMatKhau.Text;
+            userToAdd.ChucVu = cbChucVu.Text;
+            userToAdd.MaNV = int.Parse(cbMaNVien.Text);
+
+            userBUS.AddUserBUS(userToAdd);
+        }
+
+        private void btnThemUser_Click(object sender, EventArgs e)
+        {
+            if (txtTenDangNhap.Text != "" && txtMatKhau.Text != "" && cbChucVu.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn thêm một tài khoản mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddUser();
+                        LoadUser();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Xoa Tai Khoan
+        private void DeleteUser()
+        {
+            int userId = int.Parse(txtMaTaiKhoan.Text);
+            userBUS.DeleteUserBUS(userId);
+        }
+
+        private void btnXoaUser_Click(object sender, EventArgs e)
+        {
+            if (txtTenDangNhap.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa tài khoản." + txtTenDangNhap.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteUser();
+                        LoadUser();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn tài khoản muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Sua Tai Khoan
+        private void UpdateUser()
+        {
+            TaiKhoan user = new TaiKhoan();
+            user.MaTaiKhoan = int.Parse(txtMaTaiKhoan.Text);
+            user.TenTaiKhoan = txtTenDangNhap.Text;
+            user.MatKhau = txtMatKhau.Text;
+            user.ChucVu = cbChucVu.Text;
+            user.MaNV = int.Parse(cbMaNVien.Text);
+
+            userBUS.UpdateUserBUS(user);
+        }
+
+        private void btnSuaUser_Click(object sender, EventArgs e)
+        {
+            if (txtMaTaiKhoan.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa tài khoản." + txtTenDangNhap.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateUser();
+                        LoadUser();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn tài khoản muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Tim Tai Khoan
+        private void SearchTaiKhoan()
+        {
+            if (rdbTimMaUser.Checked)
+            {
+                int key = int.Parse(txtTimUser.Text);
+                dgvUser.DataSource = userBUS.SearchMaTaiKhoan(key);
+            }
+            else
+            {
+                string key = txtTimUser.Text;
+                dgvUser.DataSource = userBUS.SearchTenTaiKhoan(key);
+            }
+        }
+
+        private void btnTimUser_Click(object sender, EventArgs e)
+        {
+            if (txtTimUser.Text != "" && txtTimUser.Text != "Nhập từ khóa............")
+            {
+                SearchTaiKhoan();
+            }
+            else
+            {
+                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtTimUser_Click(object sender, EventArgs e)
+        {
+            txtTimLoai.Text = "";
+            txtTimLoai.ForeColor = Color.Black;
+        }
+
+        private void txtTimUser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimUser_Click(sender, e);
             }
         }
         #endregion
