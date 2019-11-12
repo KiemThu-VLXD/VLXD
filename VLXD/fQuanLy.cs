@@ -1392,8 +1392,43 @@ namespace VLXD
                 txtDienThoaiNSX.Text = dgvNSX.Rows[row].Cells[3].Value.ToString();
             }
         }
+        //Them NSX
+        private void AddNSX()
+        {
+            NhaSanXuat nsxToAdd = new NhaSanXuat();
+            nsxToAdd.TenCongTyNSX = txtTenNSX.Text;
+            nsxToAdd.DiaChiNSX = txtDiaChiNSX.Text;
+            nsxToAdd.DienThoaiNSX = txtDienThoaiNSX.Text;
 
-       
+            nsxBUS.AddNSXBUS(nsxToAdd);
+        }
+
+        private void btnThemNSX_Click(object sender, EventArgs e)
+        {
+            if (txtTenNSX.Text != "" && txtDiaChiNSX.Text != "" && txtDienThoaiNSX.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn thêm một nhà sản xuất mới?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        AddNSX();
+                        LoadNSX();
+                        MessageBox.Show("Đã thêm thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
 
         #endregion
     }
