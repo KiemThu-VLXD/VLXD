@@ -1162,8 +1162,86 @@ namespace VLXD
                 txtThanhTien.Text = dgvHD.Rows[row].Cells[9].Value.ToString();
             }
         }
+        //Them HD
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            if (txtSoLuong.Text != "" && int.Parse(txtSoLuong.Text) > 0
+                && txtGiamGia.Text != "" && double.Parse(txtGiamGia.Text) >= 0)
+            {
+                double a, b, c;
+                a = double.Parse(txtGiaBan.Text);
+                b = double.Parse(txtSoLuong.Text);
+                c = double.Parse(txtGiamGia.Text);
+                txtThanhTien.Text = (a * b - (a * b * c / 100)).ToString();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin."
+                    + "\n Số lượng phải lớn hơn 0."
+                    + "\n Giảm giá phải lớn hơn hoặc bằng 0.");
+            }
+        }
 
-        
+        private void AddHD()
+        {
+            HoaDon hd = new HoaDon();
+            hd.MaKH = int.Parse(cbMaKH.Text);
+            hd.MaNV = int.Parse(cbMaNV.Text);
+            hd.NgayDatHang = dtpNgayDatHang.Value;
+            hd.NgayGiaoHang = dtpNgayGiaoHang.Value;
+
+            ChiTietHD cthd = new ChiTietHD();
+            cthd.MaSP = int.Parse(cbMaSP.Text);
+            cthd.GiaBan = decimal.Parse(txtGiaBan.Text);
+            cthd.SoLuong = int.Parse(txtSoLuong.Text);
+            cthd.GiamGia = double.Parse(txtGiamGia.Text);
+            cthd.ThanhTien = decimal.Parse(txtThanhTien.Text);
+
+            hdBUS.AddHDBUS(hd, cthd);
+        }
+
+        private void btnThemHD_Click(object sender, EventArgs e)
+        {
+            if (dtpNgayGiaoHang.Value.Date > dtpNgayDatHang.Value.Date
+                && txtMaHD.Text == "" && txtGiamGia.Text != ""
+                && txtSoLuong.Text != "" && int.Parse(txtSoLuong.Text) > 0
+                && txtThanhTien.Text != "" && int.Parse(txtThanhTien.Text) > 0)
+            {
+                DialogResult result = MessageBox.Show("Bạn muốn lập hóa đơn mới?",
+                    "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+
+                    case DialogResult.OK:
+                        if (hdBUS.KtraConHangBUS(int.Parse(txtMaSP.Text)) == 0)
+                        {
+                            AddHD();
+                            LoadHD();
+                            MessageBox.Show("Lập hóa đơn thành công.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Rất tiếc, sản phẩm này tạm hết hàng.",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Đúng và Đầy Đủ thông tin."
+                + "\nLưu ý ngày giao hàng phải luôn sau ngày đặt hàng 1 ngày,"
+                + "số lượng và thành tiền phải lớn hơn 0 và % giảm giá phải lớn hơn hoặc bằng 0.",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         #endregion
 
 
