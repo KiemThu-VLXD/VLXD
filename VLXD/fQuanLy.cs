@@ -1240,6 +1240,82 @@ namespace VLXD
                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Xoa HD
+        private void DeleteHD()
+        {
+            int id = int.Parse(txtMaHD.Text);
+            hdBUS.DeleteHDBUS(id);
+        }
+
+        private void btnXoaHD_Click(object sender, EventArgs e)
+        {
+            if (txtMaHD.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa hóa đơn " + txtMaHD.Text, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteHD();
+                        LoadHD();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn hóa đơn muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Sua HD
+        private void UpdateHD()
+        {
+            HoaDon hd = new HoaDon();
+            hd.MaHD = int.Parse(txtMaHD.Text);
+            hd.MaNV = int.Parse(cbMaNV.Text);
+            hd.MaKH = int.Parse(cbMaKH.Text);
+            hd.NgayDatHang = dtpNgayDatHang.Value;
+            hd.NgayGiaoHang = dtpNgayGiaoHang.Value;
+
+            ChiTietHD cthd = new ChiTietHD();
+            cthd.MaHD = int.Parse(txtMaHD.Text);
+            cthd.GiaBan = decimal.Parse(txtGiaBan.Text);
+            cthd.SoLuong = int.Parse(txtSoLuong.Text);
+            cthd.GiamGia = double.Parse(txtGiamGia.Text);
+            cthd.ThanhTien = decimal.Parse(txtThanhTien.Text);
+
+            hdBUS.UpdateHDBUS(hd, cthd);
+        }
+
+        private void btnSuaHD_Click(object sender, EventArgs e)
+        {
+            if (txtMaHD.Text != "" && int.Parse(oldMaSP) == int.Parse(cbMaSP.Text))
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn sửa hóa đơn " + txtMaHD.Text + "\nLưu ý không thể đổi sản phẩm khác.",
+                    "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        UpdateHD();
+                        LoadHD();
+                        MessageBox.Show("Đã sửa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn hóa đơn muốn sửa thông tin.\nLưu ý không thể đổi thành sản phẩm khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
         #endregion
