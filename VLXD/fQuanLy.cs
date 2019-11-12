@@ -28,8 +28,8 @@ namespace VLXD
             LoadKH();
             LoadLoaiSP();
             LoadUser();
+            LoadThongKe();
             
-
 
 
             cbMaNV.DataSource = nvBUS.LoadNVBUS();
@@ -1053,6 +1053,42 @@ namespace VLXD
             if (e.KeyCode == Keys.Enter)
             {
                 btnTimUser_Click(sender, e);
+            }
+        }
+        #endregion
+
+        #region Thống kê
+        HoaDonBUS hdBUS = new HoaDonBUS();
+
+        private void tabThongKe_Click(object sender, EventArgs e)
+        {
+            LoadThongKe();
+        }
+
+        private void LoadThongKe()
+        {
+            dgvThongKe.AutoGenerateColumns = false;
+            dgvThongKe.DataSource = hdBUS.LoadHDBUS();
+        }
+
+        private void SearchNgayDatHang()
+        {
+            DateTime ngayBD, ngayKT;
+            ngayBD = dtpNgayBD.Value;
+            ngayKT = dtpNgayKT.Value;
+            var r = hdBUS.SearchNgayDatHangBUS(ngayBD, ngayKT);
+            dgvThongKe.DataSource = hdBUS.SearchNgayDatHangBUS(ngayBD, ngayKT);
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            if (dtpNgayBD.Value < dtpNgayKT.Value)
+            {
+                SearchNgayDatHang();
+            }
+            else
+            {
+                MessageBox.Show("Hãy kiểm tra xem ngày bắt đầu có trước ngày kết thúc không.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
