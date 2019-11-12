@@ -1461,6 +1461,37 @@ namespace VLXD
                 MessageBox.Show("Bạn hãy chọn nhà sản xuất muốn sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        //Xoa NSX
+        private void DeleteNSX()
+        {
+            int id = int.Parse(txtMaNSX.Text);
+            nsxBUS.DeleteNSXBUS(id);
+        }
+
+        private void btnXoaNSX_Click(object sender, EventArgs e)
+        {
+            if (txtMaNSX.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa nhà sản xuất" + txtMaNSX.Text + "?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                switch (result)
+                {
+                    case DialogResult.Cancel:
+                        break;
+                    case DialogResult.OK:
+                        DeleteNSX();
+                        LoadNSX();
+                        MessageBox.Show("Đã xóa thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn nhà sản xuất muốn xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
 
