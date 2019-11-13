@@ -31,8 +31,6 @@ namespace VLXD
             LoadKH();
             LoadHD();
 
-            dgvSP.AutoGenerateColumns = false;
-            dgvSP.DataSource = spBUS.LoadSPBUS();
 
             cbMaKHang.DataSource = khBUS.LoadKHBUS();
             cbMaKHang.DisplayMember = "MaKH";
@@ -40,7 +38,7 @@ namespace VLXD
             cbMaNVien.DataSource = nvBUS.LoadNVBUS();
             cbMaNVien.DisplayMember = "MaNV";
 
-            cbMaSPham.DataSource = spBUS.LoadSPBUS(); 
+            cbMaSPham.DataSource = spBUS.LoadSPBUS();
             cbMaSPham.DisplayMember = "MaSP";
         }
 
@@ -253,56 +251,13 @@ namespace VLXD
 
         #endregion
 
-        #region Sản phẩm
 
-        private void txtTimSP_Click(object sender, EventArgs e)
-        {
-            txtTimSP.Text = "";
-            txtTimSP.ForeColor = Color.Black;
-        }
-
-        private void txtTimSP_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnTimSP_Click(sender, e);
-            }
-        }
-
-        private void SearchSP()
-        {
-
-            if (rdbTimMaSP.Checked)
-            {
-                int key = int.Parse(txtTimSP.Text);
-                dgvSP.DataSource = spBUS.SearchMaSPBUS(key);
-            }
-            else
-            {
-                string key = txtTimSP.Text;
-                dgvSP.DataSource = spBUS.SearchTenSPBUS(key);
-            }
-        }
-
-        private void btnTimSP_Click(object sender, EventArgs e)
-        {
-            if (txtTimSP.Text != "" && txtTimSP.Text != "Nhập từ khóa............")
-            {
-                SearchSP();
-            }
-            else
-            {
-                MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        #endregion
 
         #region Hóa đơn
 
         //Hien thi 
         private void tabDatHang_Click(object sender, EventArgs e)
         {
-            dgvSP.DataSource = spBUS.LoadSPBUS();
 
             txtSoLuong.Text = "";
             txtGiamGia.Text = "";
