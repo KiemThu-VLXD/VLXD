@@ -533,7 +533,7 @@
             this.tabDatHang.Size = new System.Drawing.Size(886, 556);
             this.tabDatHang.TabIndex = 1;
             this.tabDatHang.Text = "Đặt hàng";
-           
+            this.tabDatHang.Click += new System.EventHandler(this.tabDatHang_Click);
             // 
             // btnThanhToan
             // 
@@ -544,7 +544,7 @@
             this.btnThanhToan.TabIndex = 123;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
-            
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // groupBox2
             // 
@@ -690,7 +690,7 @@
             this.btnThemHD.Text = "Thêm";
             this.btnThemHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemHD.UseVisualStyleBackColor = true;
-           
+            this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click);
             // 
             // txtTenNVien
             // 
@@ -715,7 +715,7 @@
             this.btnSuaHD.Text = "Sửa";
             this.btnSuaHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSuaHD.UseVisualStyleBackColor = true;
-          
+            this.btnSuaHD.Click += new System.EventHandler(this.btnSuaHD_Click);
             // 
             // cbMaSPham
             // 
@@ -724,7 +724,7 @@
             this.cbMaSPham.Name = "cbMaSPham";
             this.cbMaSPham.Size = new System.Drawing.Size(103, 27);
             this.cbMaSPham.TabIndex = 117;
-           
+            this.cbMaSPham.SelectedIndexChanged += new System.EventHandler(this.cbMaSPham_SelectedIndexChanged);
             // 
             // txtTenKHang
             // 
@@ -837,7 +837,7 @@
             this.cbMaKHang.Name = "cbMaKHang";
             this.cbMaKHang.Size = new System.Drawing.Size(92, 27);
             this.cbMaKHang.TabIndex = 116;
-            
+            this.cbMaKHang.SelectedValueChanged += new System.EventHandler(this.cbMaKHang_SelectedValueChanged);
             // 
             // cbMaNVien
             // 
@@ -846,7 +846,7 @@
             this.cbMaNVien.Name = "cbMaNVien";
             this.cbMaNVien.Size = new System.Drawing.Size(92, 27);
             this.cbMaNVien.TabIndex = 116;
-           
+            this.cbMaNVien.SelectedIndexChanged += new System.EventHandler(this.cbMaNVien_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -924,7 +924,8 @@
             this.txtTimHD.Size = new System.Drawing.Size(334, 27);
             this.txtTimHD.TabIndex = 12;
             this.txtTimHD.Text = "Nhập từ khóa............";
-            
+            this.txtTimHD.Click += new System.EventHandler(this.txtTimHD_Click);
+            this.txtTimHD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTimHD_KeyDown);
             // 
             // rdbTimMaHD
             // 
@@ -965,7 +966,7 @@
             this.dgvHD.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvHD.Size = new System.Drawing.Size(868, 210);
             this.dgvHD.TabIndex = 0;
-           
+            this.dgvHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHD_CellClick);
             // 
             // Col3
             // 
@@ -1067,7 +1068,7 @@
             this.btnTimHD.Text = "Tìm";
             this.btnTimHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimHD.UseVisualStyleBackColor = true;
-          
+            this.btnTimHD.Click += new System.EventHandler(this.btnTimHD_Click);
             // 
             // txtGiaBan
             // 

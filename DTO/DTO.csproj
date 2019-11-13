@@ -61,6 +61,7 @@
     <Compile Include="Entity\NhanVien.cs" />
     <Compile Include="Entity\NhaSanXuat.cs" />
     <Compile Include="Entity\SanPham.cs" />
+    <Compile Include="Entity\sysdiagrams.cs" />
     <Compile Include="Entity\TaiKhoan.cs" />
     <Compile Include="Entity\VLXD.cs" />
     <Compile Include="HD_CTHD.cs" />
