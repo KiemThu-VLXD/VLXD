@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test_Customer.cs" />
+    <Compile Include="Test_Employee.cs" />
     <Compile Include="Test_Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_User.cs" />
