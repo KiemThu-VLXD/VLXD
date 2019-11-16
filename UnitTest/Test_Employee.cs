@@ -17,27 +17,25 @@ namespace UnitTest
         public void Test_AddNhanVien_Suscess()
         {
             nvBUS = new NhanVienBUS();
-            int expected = 7;
-
             nv = new NhanVien();
             nv.HoNV = "Long";
-            nv.TenNV = "Linh";
+            nv.TenNV = "Hoa";
             nv.GioiTinh = "xxx";
             DateTime birthday = new DateTime(1996, 6, 6);
             nv.NgaySinh = birthday;
             nv.DiaChi = "123";
             nv.DienThoai = "321";
             nvBUS.AddNVBUS(nv);
-
-            Assert.AreEqual(8, nvBUS.LoadNVBUS().Count);
+            // Sau khi add thi co them X+1 nguoi
+            Assert.AreEqual(12, nvBUS.LoadNVBUS().Count);
         }
 
         [TestMethod]
         public void Test_UpdateNhanVien_Suscess()
         {
-            nvBUS = new NhanVienBUS();
+            
             nv = new NhanVien();
-            nv.MaNV = 6;
+            nv.MaNV = 20;
             nv.HoNV = "BDSH";
             nv.TenNV = "Pass Test";
             nv.GioiTinh = "Nam";
@@ -45,9 +43,8 @@ namespace UnitTest
             nv.NgaySinh = birthday;
             nv.DiaChi = "1234 Nguyễn Văn Linh";
             nv.DienThoai = "038123246";
+            nvBUS = new NhanVienBUS();
 
-
-            Assert.AreEqual(0, nvBUS.SearchTenNVBUS(nv.TenNV).Count);
 
             nvBUS.UpdateNVBUS(nv);
 

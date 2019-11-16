@@ -17,35 +17,32 @@ namespace UnitTest
         public void Test_AddKhachHang_Suscess()
         {
             khBUS = new KhachHangBUS();
-            int expected = 17; //Danh sach hien co X ng
-
             kh = new KhachHang();
-            kh.HoKH = "Nguyễn Thị";
-            kh.TenKH = "th";
+            kh.HoKH = "XXXXX";
+            kh.TenKH = "YYYYYOOOO";
             kh.GioiTinh = "Nu";
             kh.DiaChi = "123";
             kh.DienThoai = "321";
             khBUS.AddKHBUS(kh);
             // Sau khi add thi co them X+1 nguoi
-            Assert.AreEqual(18, khBUS.LoadKHBUS().Count);
+            Assert.AreEqual(29, khBUS.LoadKHBUS().Count);
         }
 
         [TestMethod]
         public void Test_UpdateKhachHang_Suscess()
         {
             kh = new KhachHang();
-            kh.MaKH = 24;
-            kh.HoKH = "BDSHvsHHL";
-            kh.TenKH = "Pass Test";
+            kh.MaKH = 34;
+            kh.HoKH = "XXXXX";
+            kh.TenKH = "MMMMM";
             kh.GioiTinh = "NU";
             kh.DiaChi = "1234 Nguyễn Văn Linh";
             kh.DienThoai = "038123246";
 
             khBUS = new KhachHangBUS();
-            // Assert.AreEqual(0, khBUS.SearchTenKHBUS(kh.TenKH).Count);
-
+       
             khBUS.UpdateKHBUS(kh);
-
+            // Sau khi update co 1 hang thay doi
             Assert.AreEqual(1, khBUS.SearchTenKHBUS(kh.TenKH).Count);
         }
         [TestMethod]
@@ -53,6 +50,7 @@ namespace UnitTest
         {
             khBUS = new KhachHangBUS();
             khBUS.DeleteKHBUS(32); // Ma KH
+            // Sau khi xoa con lai X -1 nguoi
             Assert.AreEqual(26, khBUS.LoadKHBUS().Count); //So luong KH con lai sau khi xoa
         }
 
@@ -60,7 +58,8 @@ namespace UnitTest
         public void Test_SearchMaKhachHang_Suscess()
         {
             khBUS = new KhachHangBUS();
-            Assert.AreEqual(1, khBUS.SearchMaKHBUS(1).Count);
+            // Nhap ma Customer can search
+            Assert.AreEqual(1, khBUS.SearchMaKHBUS(38).Count);
         }
         [TestMethod]
         public void Test_SearchMaKhachHang_Fail()

@@ -16,8 +16,7 @@ namespace UnitTest
         public void Test_AddUser_Suscess()
         {
             userBUS = new TaiKhoanBUS();
-            int expected = 7;
-
+            
             user = new TaiKhoan();
             user.TenTaiKhoan = "Hoa";
             user.MatKhau = "123";
@@ -39,8 +38,7 @@ namespace UnitTest
             user.MaNV = 4;
 
             userBUS = new TaiKhoanBUS();
-            // Assert.AreEqual(0, userBUS.SearchTenTaiKhoan(user.TenTaiKhoan).Count);
-
+            
             userBUS.UpdateUserBUS(user);
 
             Assert.AreEqual(1, userBUS.SearchTenTaiKhoan(user.TenTaiKhoan).Count);

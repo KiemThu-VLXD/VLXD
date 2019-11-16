@@ -18,7 +18,7 @@ namespace UnitTest
             uBUS = new TaiKhoanBUS();
             // 2 là Nhân viên
             int expected = 2;
-            int actual = uBUS.DangNhapBUS("Huy", "123");
+            int actual = uBUS.DangNhapBUS("Trai", "123");
 
             Assert.AreEqual(expected, actual);
         }
