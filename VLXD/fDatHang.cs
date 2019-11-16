@@ -496,7 +496,7 @@ namespace VLXD
             else
             {
                 int maKH = int.Parse(txtTimHD.Text);
-                dgvHD.DataSource = hdBUS.SearchMaHDBUS(maKH);
+                dgvHD.DataSource = hdBUS.SearchMaKHBUS(maKH);
             }
         }
 
@@ -511,6 +511,7 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
         #endregion
     }

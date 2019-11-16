@@ -1189,8 +1189,11 @@ namespace VLXD
                 MessageBox.Show("Hãy nhập từ khóa để tìm kiếm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+
+
         #endregion
 
-
+       
     }
 }

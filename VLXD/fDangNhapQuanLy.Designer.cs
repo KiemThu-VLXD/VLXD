@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDangNhapQuanLy));
             this.lbXemMatKhau = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -41,7 +40,7 @@
             // 
             // lbXemMatKhau
             // 
-            this.lbXemMatKhau.Image = ((System.Drawing.Image)(resources.GetObject("lbXemMatKhau.Image")));
+            this.lbXemMatKhau.Image = global::VLXD.Properties.Resources.eye_icon;
             this.lbXemMatKhau.Location = new System.Drawing.Point(408, 162);
             this.lbXemMatKhau.Name = "lbXemMatKhau";
             this.lbXemMatKhau.Size = new System.Drawing.Size(42, 27);

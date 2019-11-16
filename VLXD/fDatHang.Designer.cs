@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDatHang));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTTKHang = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -63,9 +62,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnThemHD = new System.Windows.Forms.Button();
             this.txtTenNVien = new System.Windows.Forms.TextBox();
-            this.btnSuaHD = new System.Windows.Forms.Button();
             this.cbMaSPham = new System.Windows.Forms.ComboBox();
             this.txtTenKHang = new System.Windows.Forms.TextBox();
             this.txtMaHD = new System.Windows.Forms.TextBox();
@@ -104,9 +101,11 @@
             this.txtGiamGia = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpNgayGiaoHang = new System.Windows.Forms.DateTimePicker();
+            this.btnThemHD = new System.Windows.Forms.Button();
+            this.btnSuaHD = new System.Windows.Forms.Button();
             this.btnQLy = new System.Windows.Forms.Button();
-            this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnTaiKhoan = new System.Windows.Forms.Button();
+            this.btnDangXuat = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTTKHang.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -286,7 +285,7 @@
             // 
             this.btnTimKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTimKH.ForeColor = System.Drawing.Color.Black;
-            this.btnTimKH.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKH.Image")));
+            this.btnTimKH.Image = global::VLXD.Properties.Resources.search_icon;
             this.btnTimKH.Location = new System.Drawing.Point(758, 240);
             this.btnTimKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimKH.Name = "btnTimKH";
@@ -295,6 +294,7 @@
             this.btnTimKH.Text = "Tìm";
             this.btnTimKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimKH.UseVisualStyleBackColor = true;
+            this.btnTimKH.Click += new System.EventHandler(this.btnTimKH_Click);
             // 
             // txtMaKH
             // 
@@ -450,7 +450,7 @@
             // 
             this.btnSuaKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSuaKH.ForeColor = System.Drawing.Color.Black;
-            this.btnSuaKH.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaKH.Image")));
+            this.btnSuaKH.Image = global::VLXD.Properties.Resources.edit_icon;
             this.btnSuaKH.Location = new System.Drawing.Point(758, 93);
             this.btnSuaKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSuaKH.Name = "btnSuaKH";
@@ -465,7 +465,7 @@
             // 
             this.btnThemKH.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThemKH.ForeColor = System.Drawing.Color.Black;
-            this.btnThemKH.Image = ((System.Drawing.Image)(resources.GetObject("btnThemKH.Image")));
+            this.btnThemKH.Image = global::VLXD.Properties.Resources.add_icon;
             this.btnThemKH.Location = new System.Drawing.Point(758, 29);
             this.btnThemKH.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnThemKH.Name = "btnThemKH";
@@ -483,9 +483,7 @@
             this.tabDatHang.Controls.Add(this.label9);
             this.tabDatHang.Controls.Add(this.label7);
             this.tabDatHang.Controls.Add(this.label1);
-            this.tabDatHang.Controls.Add(this.btnThemHD);
             this.tabDatHang.Controls.Add(this.txtTenNVien);
-            this.tabDatHang.Controls.Add(this.btnSuaHD);
             this.tabDatHang.Controls.Add(this.cbMaSPham);
             this.tabDatHang.Controls.Add(this.txtTenKHang);
             this.tabDatHang.Controls.Add(this.txtMaHD);
@@ -509,6 +507,8 @@
             this.tabDatHang.Controls.Add(this.txtGiamGia);
             this.tabDatHang.Controls.Add(this.label2);
             this.tabDatHang.Controls.Add(this.dtpNgayGiaoHang);
+            this.tabDatHang.Controls.Add(this.btnThemHD);
+            this.tabDatHang.Controls.Add(this.btnSuaHD);
             this.tabDatHang.Location = new System.Drawing.Point(4, 28);
             this.tabDatHang.Name = "tabDatHang";
             this.tabDatHang.Padding = new System.Windows.Forms.Padding(3);
@@ -564,21 +564,6 @@
             this.label1.TabIndex = 104;
             this.label1.Text = "Mã HD:";
             // 
-            // btnThemHD
-            // 
-            this.btnThemHD.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThemHD.ForeColor = System.Drawing.Color.Black;
-            this.btnThemHD.Image = ((System.Drawing.Image)(resources.GetObject("btnThemHD.Image")));
-            this.btnThemHD.Location = new System.Drawing.Point(573, 194);
-            this.btnThemHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnThemHD.Name = "btnThemHD";
-            this.btnThemHD.Size = new System.Drawing.Size(76, 28);
-            this.btnThemHD.TabIndex = 119;
-            this.btnThemHD.Text = "Thêm";
-            this.btnThemHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnThemHD.UseVisualStyleBackColor = true;
-            this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click);
-            // 
             // txtTenNVien
             // 
             this.txtTenNVien.Enabled = false;
@@ -588,21 +573,6 @@
             this.txtTenNVien.Name = "txtTenNVien";
             this.txtTenNVien.Size = new System.Drawing.Size(148, 23);
             this.txtTenNVien.TabIndex = 103;
-            // 
-            // btnSuaHD
-            // 
-            this.btnSuaHD.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSuaHD.ForeColor = System.Drawing.Color.Black;
-            this.btnSuaHD.Image = ((System.Drawing.Image)(resources.GetObject("btnSuaHD.Image")));
-            this.btnSuaHD.Location = new System.Drawing.Point(438, 194);
-            this.btnSuaHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSuaHD.Name = "btnSuaHD";
-            this.btnSuaHD.Size = new System.Drawing.Size(76, 28);
-            this.btnSuaHD.TabIndex = 120;
-            this.btnSuaHD.Text = "Sửa";
-            this.btnSuaHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSuaHD.UseVisualStyleBackColor = true;
-            this.btnSuaHD.Click += new System.EventHandler(this.btnSuaHD_Click);
             // 
             // cbMaSPham
             // 
@@ -946,7 +916,7 @@
             // 
             this.btnTimHD.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnTimHD.ForeColor = System.Drawing.Color.Black;
-            this.btnTimHD.Image = ((System.Drawing.Image)(resources.GetObject("btnTimHD.Image")));
+            this.btnTimHD.Image = global::VLXD.Properties.Resources.search_icon;
             this.btnTimHD.Location = new System.Drawing.Point(739, 19);
             this.btnTimHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTimHD.Name = "btnTimHD";
@@ -1028,6 +998,36 @@
             this.dtpNgayGiaoHang.Size = new System.Drawing.Size(235, 23);
             this.dtpNgayGiaoHang.TabIndex = 112;
             // 
+            // btnThemHD
+            // 
+            this.btnThemHD.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThemHD.ForeColor = System.Drawing.Color.Black;
+            this.btnThemHD.Image = global::VLXD.Properties.Resources.add_icon;
+            this.btnThemHD.Location = new System.Drawing.Point(573, 194);
+            this.btnThemHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThemHD.Name = "btnThemHD";
+            this.btnThemHD.Size = new System.Drawing.Size(76, 28);
+            this.btnThemHD.TabIndex = 119;
+            this.btnThemHD.Text = "Thêm";
+            this.btnThemHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThemHD.UseVisualStyleBackColor = true;
+            this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click);
+            // 
+            // btnSuaHD
+            // 
+            this.btnSuaHD.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnSuaHD.ForeColor = System.Drawing.Color.Black;
+            this.btnSuaHD.Image = global::VLXD.Properties.Resources.edit_icon;
+            this.btnSuaHD.Location = new System.Drawing.Point(438, 194);
+            this.btnSuaHD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSuaHD.Name = "btnSuaHD";
+            this.btnSuaHD.Size = new System.Drawing.Size(76, 28);
+            this.btnSuaHD.TabIndex = 120;
+            this.btnSuaHD.Text = "Sửa";
+            this.btnSuaHD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSuaHD.UseVisualStyleBackColor = true;
+            this.btnSuaHD.Click += new System.EventHandler(this.btnSuaHD_Click);
+            // 
             // btnQLy
             // 
             this.btnQLy.Location = new System.Drawing.Point(812, 13);
@@ -1037,18 +1037,6 @@
             this.btnQLy.Text = "Quản lý";
             this.btnQLy.UseVisualStyleBackColor = true;
             this.btnQLy.Click += new System.EventHandler(this.btnQLy_Click);
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
-            this.btnDangXuat.Location = new System.Drawing.Point(577, 12);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(95, 26);
-            this.btnDangXuat.TabIndex = 123;
-            this.btnDangXuat.Text = "Đăng xuất";
-            this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDangXuat.UseVisualStyleBackColor = true;
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnTaiKhoan
             // 
@@ -1060,6 +1048,18 @@
             this.btnTaiKhoan.Text = "Thông tin tài khoản";
             this.btnTaiKhoan.UseVisualStyleBackColor = true;
             this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
+            // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.Image = global::VLXD.Properties.Resources.logout_icon;
+            this.btnDangXuat.Location = new System.Drawing.Point(577, 12);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(95, 26);
+            this.btnDangXuat.TabIndex = 123;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDangXuat.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // fDatHang
             // 

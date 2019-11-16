@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDangNhap));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbXemMatKhau = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -43,7 +42,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::VLXD.Properties.Resources.Boss;
             this.pictureBox1.Location = new System.Drawing.Point(45, 123);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(125, 116);
@@ -53,7 +52,7 @@
             // 
             // lbXemMatKhau
             // 
-            this.lbXemMatKhau.Image = ((System.Drawing.Image)(resources.GetObject("lbXemMatKhau.Image")));
+            this.lbXemMatKhau.Image = global::VLXD.Properties.Resources.eye_icon;
             this.lbXemMatKhau.Location = new System.Drawing.Point(582, 193);
             this.lbXemMatKhau.Name = "lbXemMatKhau";
             this.lbXemMatKhau.Size = new System.Drawing.Size(42, 27);
@@ -138,7 +137,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(226, 30);
             this.txtID.TabIndex = 103;
-
             // 
             // fDangNhap
             // 
